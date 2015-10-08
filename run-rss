@@ -1,3 +1,0 @@
-#! /bin/bash
-$HOME/bin/bl-rss | fmt -t -w 80
-exit 0
