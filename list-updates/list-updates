@@ -1,0 +1,8 @@
+#!/bin/bash
+oldfifs="$IFS"
+IFS=$'n'
+updates=($(apt list --upgradable))
+IFS="$oldifs"
+echo -e "$((${#updates[*]}-6)) updates available.\n"
+echo "${updates[@]:2}"
+exit 0;

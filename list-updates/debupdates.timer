@@ -1,0 +1,9 @@
+[Unit]
+Description=Checking for Debian Updates.....
+
+[Timer]
+OnBootSec=15s
+OnUnitActiveSec=24h
+
+[Install]
+WantedBy=timers.target

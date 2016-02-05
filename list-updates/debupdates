@@ -1,0 +1,3 @@
+#!/bin/bash
+systemd-cat sudo apt update
+exit 0;

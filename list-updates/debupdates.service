@@ -1,0 +1,8 @@
+[Unit]
+Description=Service file to run Debian Updates
+After=network-online.target
+Wants=network-online.target
+[Service]
+type=oneshot
+ExecStart=/usr/local/bin/debupdates
+
