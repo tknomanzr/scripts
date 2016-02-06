@@ -3,7 +3,7 @@ Description=Checking for Debian Updates.....
 
 [Timer]
 OnBootSec=15s
-OnUnitActiveSec=24h
+OnUnitActiveSec=6h
 
 [Install]
 WantedBy=timers.target
