@@ -4,7 +4,9 @@ numupdates=$((${#updates[*]}-1))
 echo $numupdates "updates available."
 echo "\${hr 1}"
 printf -- "%s\n" "${updates[@]:1:20}"
-if [ $numupdates -gt "20" ]; then
+if [ $numupdates -eq "0" ]; then
+	echo "No packages to update at this time."
+elif [ $numupdates -gt "20" ]; then
 	echo -e "\${hr 1}"
 	echo "\$alignr More Updates Available..."
 fi
