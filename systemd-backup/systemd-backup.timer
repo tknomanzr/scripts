@@ -1,0 +1,8 @@
+[Unit]
+Description=Systemd-backup Timer
+
+[Timer]
+OnUnitActiveSec=12h
+
+[Install]
+WantedBy=timers.target
