@@ -21,9 +21,11 @@ Notes:
   implement some sort of hashing to obfucate that in the future.
 - You can adjust the settings in systemd-backup.timer and set a lower value,
   say 5 minutes in order to verify that everything is working.
+- Verify the service files are working via journalctl -f
 - Note the format for backup0 excludes. Everything preceded with a -
   is removed from the backup and everything preceded by a + is added to it, regardless
   what was listed in the excludes portion. Always list excludes first and includes
   below the _*, Also be aware that rsync will choke on stray whitespace at the end of a line.
   If using Geany, it may be helpful to turn Show Whitespace on.
 - Finally, I may eventually create an install script that will assist in setting everything up.
+
