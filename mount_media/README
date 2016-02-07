@@ -1,2 +1,7 @@
 This will be a series of systemd files and scripts that will
 allow auto-mounting of a sshfs shares at boot time.
+
+REQUIRED:
+systemd
+sshfs
+ssh
