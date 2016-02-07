@@ -1,0 +1,29 @@
+Dependencies:
+ssh
+sshpass
+rsync
+systemd
+
+Useage:
+copy systemd-backup.service and systemd-backup.timer to /etc/systemd/system
+edit backup excludes and replace all the /home/ entries with your $HOME.
+copy backup-excludes to ~/.config/backup
+edit backup. Where it says "password" enter the password to your remote host.
+Further down, enter the username and ip adress of your remote host.
+Finally enter the path relative to your remote host that you want to backup to.
+Copy this file to /usr/local/bin
+Start systemd-backup.service and systemd-backup.timer
+sudo systemctl start systemd-backup.timer
+sudo systemctl start systemd-backup.service
+
+Notes:
+- Currently, sshpass is using a password in plain text. I am hoping to be able to
+  implement some sort of hashing to obfucate that in the future.
+- You can adjust the settings in systemd-backup.timer and set a lower value,
+  say 5 minutes in order to verify that everything is working.
+- Note the format for backup0 excludes. Everything preceded with a -
+  is removed from the backup and everything preceded by a + is added to it, regardless
+  what was listed in the excludes portion. Always list excludes first and includes
+  below the _*, Also be aware that rsync will choke on stray whitespace at the end of a line.
+  If using Geany, it may be helpful to turn Show Whitespace on.
+- Finally, I may eventually create an install script that will assist in setting everything up.

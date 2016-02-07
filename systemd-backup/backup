@@ -1,3 +1,4 @@
 #!/bin/bash
-	systemd-cat sshpass -p "password" rsync -arvslm --ipv4 --delete --delete-excluded --exclude-from=$HOME/.config/backup/backup-excludes --log-file=$HOME/.config/backup/backup.log / user@ip_address:/path/to/remote/backup/directory
+	systemd-cat sshpass -p "password" rsync -arvslm --ipv4 --delete --delete-excluded --exclude-from=$HOME/.config/backup/backup-excludes --log-file=$HOME/.config/backup/backup.log \
+	/ user@ip_address:/path/to/remote/backup/directory
 exit 0
