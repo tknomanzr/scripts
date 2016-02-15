@@ -50,5 +50,5 @@ ${top name 3} $alignr ${top pid 3}	${top cpu 3}	${top mem 3}
 ${top name 4} $alignr ${top pid 4}	${top cpu 4}	${top mem 4}
 ${top name 5} $alignr ${top pid 5}	${top cpu 5}	${top mem 5}
 ${color 0047ab}${hr 2}
-${font Exo-Bold:size=11}${color 0047ab}Updates: ${font Open-Sans:size=9}${color FF4500}${execpi 3600 $HOME/bin/list-updates}
+${font Exo-Bold:size=11}${color 0047ab}Updates: ${font Open-Sans:size=9}${color FF4500}${execpi 3600 ~/bin/list-updates}
 ]]

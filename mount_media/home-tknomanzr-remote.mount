@@ -1,0 +1,15 @@
+[Unit]
+After=remote-fs-pre.target
+Wants=remote-fs-pre.target
+Conflicts=umount.target
+Before=umount.target
+
+[Mount]
+What=HOST_or_IP:/path/to/share
+Where=/home/tknomanzr/remote
+Type=fuse.sshfs
+Options=users,noatime,async,defaults,idmap=user,IdentityFile=/home/user/.ssh/id_rsa,uid=1000,gid=100,umask=2,allow_other,follow_symlinks,reconnect,default_permissions
+DirectoryMode=0775
+
+[Install]
+WantedBy=remote-fs.target
