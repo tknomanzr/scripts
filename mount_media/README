@@ -5,6 +5,7 @@ REQUIRED:
 systemd
 sshfs
 ssh
+fuse
 
 Useage:
 
