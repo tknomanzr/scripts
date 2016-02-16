@@ -1,6 +1,5 @@
 Dependencies:
 ssh
-sshpass
 rsync
 systemd
 

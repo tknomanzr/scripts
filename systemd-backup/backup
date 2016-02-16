@@ -1,4 +1,4 @@
 #!/bin/bash
-	systemd-cat sshpass -p "password" rsync -arvslm --ipv4 --delete --delete-excluded --exclude-from=$HOME/.config/backup/backup-excludes --log-file=$HOME/.config/backup/backup.log \
-	/ user@ip_address:/path/to/remote/backup/directory
+	systemd-cat rsync -arvslm --ipv4 --delete --delete-excluded --exclude-from=/home/tknomanzr/.config/backup/backup-excludes \
+	--log-file=/home/tknomanzr/.config/backup/backup.log / sshd@192.168.1.4:/shares/Public/backups/wtfbox-bl
 exit 0
