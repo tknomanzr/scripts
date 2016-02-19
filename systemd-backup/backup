@@ -1,4 +1,4 @@
 #!/bin/bash
-	systemd-cat rsync -arvslm -e 'ssh -i /home/tknomanzr/.ssh/bl_rsa' --ipv4 --delete --delete-excluded --exclude-from=/home/tknomanzr/.config/backup/backup-excludes \
-	--log-file=/home/tknomanzr/.config/backup/backup.log / 192.168.1.4:/shares/Public/backups/wtfbox-bl
+	systemd-cat rsync -arvslm -e 'ssh -i /home/user/.ssh/id_rsa' --ipv4 --delete --delete-excluded --exclude-from=$HOME/.config/backup/backup-excludes \
+	--log-file=$HOME/.config/backup/backup.log / ip_address:/path_to_share
 exit 0
