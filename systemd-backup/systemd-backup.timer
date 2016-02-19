@@ -2,7 +2,7 @@
 Description=Systemd-backup Timer
 
 [Timer]
-OnBootSec=12hours
-
+OnBootSec=30s
+OnUnitActiveSec=4h
 [Install]
 WantedBy=timers.target
