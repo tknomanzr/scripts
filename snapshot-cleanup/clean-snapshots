@@ -1,0 +1,61 @@
+#! /bin/bash
+help()
+{
+	echo "Useage: trim-snapshots -k=num"
+	echo "where -k is an integer representing the number of snapshots to keep"
+	echo "If k is empty, all snapshots will be deleted."
+}
+# Get options passed in via cli
+getopt --test > /dev/null
+if [[ $? != 4 ]]; then
+    echo "I’m sorry, `getopt --test` failed in this environment."
+    exit 1
+fi
+usage="$(basename "$0") [-h] [-k n] -- cleans apt-btrfs-snapper snapshots
+
+where:
+    -h  show this help text
+    -k  set the number of snapshots to keep (default: 0)"
+
+seed=42
+while getopts ':hk:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+    k) keep=$OPTARG
+       ;;
+    :) printf "missing argument for -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "illegal option: -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+echo "Keep "$keep
+if ! [ "$keep" -eq "$keep" ] 2> /dev/null; then
+	keep=0
+fi
+echo "Keep: "$keep
+cd /.snapshots
+snapshot_count=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
+echo "Count: "$snapshot_count
+if ! [ $keep -lt $snapshot_count ]; then
+	echo "The number of snapshots you specififed to keep is equal too " \
+	"or greater than the number of snapshots in /.snapshots. There is " \
+	"nothing to do here, so exiting. If you really did want to clean "\
+	"up your snapshots directory, then check the output of apt-btrfs-snapper "\
+	"list and choose a smaller number"
+fi
+snapshot_delete=$((snapshot_count-keep))
+echo "Delete: "$snapshot_delete
+i=1
+while [ $i -le $snapshot_delete ]; do
+	echo "Deleting snapshot $i"
+	apt-btrfs-snapper delete $i
+	let i+=1
+done
