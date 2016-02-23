@@ -1,4 +1,7 @@
 #! /bin/bash
+# a simple script that will delete apt-btrfs-snapper snapshots
+# from /.snapshots
+shopt -s nullglob
 help()
 {
 	echo "Useage: trim-snapshots -k=num"
@@ -36,26 +39,23 @@ while getopts ':hk:' option; do
   esac
 done
 shift $((OPTIND - 1))
-echo "Keep "$keep
 if ! [ "$keep" -eq "$keep" ] 2> /dev/null; then
 	keep=0
 fi
-echo "Keep: "$keep
 cd /.snapshots
 snapshot_count=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
-echo "Count: "$snapshot_count
 if ! [ $keep -lt $snapshot_count ]; then
 	echo "The number of snapshots you specififed to keep is equal too " \
 	"or greater than the number of snapshots in /.snapshots. There is " \
-	"nothing to do here, so exiting. If you really did want to clean "\
-	"up your snapshots directory, then check the output of apt-btrfs-snapper "\
+	"nothing to do here, so exiting. If you really did want to clean " \
+	"up your snapshots directory, then check the output of apt-btrfs-snapper " \
 	"list and choose a smaller number"
 fi
 snapshot_delete=$((snapshot_count-keep))
-echo "Delete: "$snapshot_delete
-i=1
-while [ $i -le $snapshot_delete ]; do
-	echo "Deleting snapshot $i"
-	apt-btrfs-snapper delete $i
-	let i+=1
+file_array=( /.snapshots/* )
+for ((i=0; i<$keep;i=$i+1)); do
+	delete_path=$(echo ${file_array[${i}]} | cut -b 13-)
+	systemd-cat echo "Deleting snapshot "${file_array[${i}]}
+	apt-btrfs-snapper delete $delete_path
 done
+systemd-cat apt-btrfs-snapper list
