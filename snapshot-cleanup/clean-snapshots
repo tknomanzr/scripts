@@ -4,7 +4,7 @@
 shopt -s nullglob
 help()
 {
-	echo "Useage: trim-snapshots -k=num"
+	echo "Useage: clean-snapshots -k=num"
 	echo "where -k is an integer representing the number of snapshots to keep"
 	echo "If k is empty, all snapshots will be deleted."
 }
@@ -52,8 +52,9 @@ if ! [ $keep -lt $snapshot_count ]; then
 	"list and choose a smaller number"
 fi
 snapshot_delete=$((snapshot_count-keep))
+echo "DELETING "$snapshot_delete" snapshots"
 file_array=( /.snapshots/* )
-for ((i=0; i<$keep;i=$i+1)); do
+for ((i=0; i<$snapshot_delete;i=$i+1)); do
 	delete_path=$(echo ${file_array[${i}]} | cut -b 13-)
 	systemd-cat echo "Deleting snapshot "${file_array[${i}]}
 	apt-btrfs-snapper delete $delete_path
