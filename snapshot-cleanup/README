@@ -27,6 +27,17 @@ sudo systemctl enable snapshot-cleanup.timer
 sudo systemctl start snapshot-cleanup.service
 sudo systemctl start snapshot-cleanup.timer
 
+OPTIONAL:
+system-upgrade is a script that wraps apt update, apt list --upgradable
+apt-btrf-snapper pre-snap, dist-upgrade and 
+apt-btrfs-snapper post-sanap into a single script. It is entirely
+optional as apt-btrfs-snapper is already monitoring apt. If you choose to
+use it, however, it will not add additional snapshots, meaning you will
+still take two snapshots: one pre dist-upgrade and one post dist-upgrade.
+The script will allow you the option to exit out by answering no after
+apt list--upgradable runs, in which case, you will exit out of the script
+with no snapshots taken.
+
 DEPENDENCIES:
 The script clean-snapshots depends on:
 btrfs
