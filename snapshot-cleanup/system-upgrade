@@ -1,0 +1,23 @@
+#!/bin/bash
+# a Simple wrapper script to apt update and apt dist-upgrade that
+# will take a btrfs snapshot. This can be rolled back in case of
+# a disastrous upgrade on Sid systems.
+# This script presupposes a btrfs subvolume called backup is created
+# on the root directory. Snapshots will go into @/backup/old_root
+# Author: William Bradley (tknomanzr)
+# License: GPL 3.0
+# Date: 2/20/2016
+
+apt update
+apt list --upgradable
+read -p "Go ahead with dist-upgrade?" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	apt-btrfs-snapper pre-snap
+	apt dist-upgrade
+	apt-btrfs-snapper post-snap
+else
+	exit 1
+fi
+exit 0
