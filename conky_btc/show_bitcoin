@@ -1,12 +1,11 @@
 #! /usr/bin/python
 # A simple utility that will calculate bitcoin balance from an electrum wallet.
-# Requires: electrum, requests
-# requests can be obtained via pip install requests
+# Requires: electrum
+# Assumes: you currently have bitcoin stored in an electrum wallet.
 # Author: William Bradley
 # BunsenLabs Forum Handle: tknomanzr
 # License: wtfpl. Use this script however you see fit.
-import json, urllib2
-import subprocess, json
+import json, urllib2, subprocess
 url = 'https://coinbase.com/api/v1/prices/historical'
 font1 = "${font Exo-Bold:size=11}${color 0047ab}"
 font2 = "${font Open-Sans:size=9}${color FF4500}"
