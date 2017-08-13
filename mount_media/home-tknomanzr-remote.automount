@@ -1,6 +1,0 @@
-[Automount]
-Where=/home/tknomanzr/remote
-DirectoryMode=0775
-
-[Install]
-WantedBy=multi-user.target
