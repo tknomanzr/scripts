@@ -1,13 +1,64 @@
 #!/bin/bash
+# Get the list of updates
 readarray -t updates <<< "$(apt list --upgradable 2>/dev/null)"
+# Get the number of updates
 numupdates=$((${#updates[*]}-1))
-echo $numupdates "updates available."
-echo "\${hr 1}"
-printf -- "%s\n" "${updates[@]:1:20}"
-if [ $numupdates -eq "0" ]; then
-	echo "No packages to update at this time."
-elif [ $numupdates -gt "20" ]; then
-	echo -e "\${hr 1}"
-	echo "\$alignr More Updates Available..."
+# Help function
+function print_help() {
+	echo "-c|--count will print the number of updates to stdout."
+	echo "-l|--list will print the list of updates to stdout."
+	echo "-h|--help is this help."
+	echo
+	echo "This command expects one or more arguments. If none are supplied,"
+	echo "then the program will return this help"
+}
+#print the number of updates available
+function print_updateCount() {
+	echo $numupdates "updates available."
+}
+function print_updateList() {
+	printf -- "%s\n" "${updates[@]:1:20}"
+	if [ $numupdates -eq "0" ]; then
+		echo "No packages to update at this time."
+	elif [ $numupdates -gt "20" ]; then
+		echo "More Updates Available..."
+	fi
+}
+# Arg parser
+getopt --test > /dev/null
+if [[ $? -ne 4 ]]; then
+	echo "I'm sorry, `getopt --test failed in this environment.`"
+	exit 1
+fi																
+OPTIONS=clh
+LONGOPTIONS=count,list,help
+PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTIONS --name "$0" -- "$@")
+if [[ $? -ne 0 ]]; then
+	# getopt has complained about wrong arguments to stdout
+	exit 2
 fi
+# use eval with "$PARSED" to properly handle the quoting
+while true; do
+	case "$1" in
+		-c|--count)
+		print_updateCount
+		shift
+		;;
+		-l|--list)
+		print_updateList
+		shift
+		;;
+		-h|--help)
+		print_help
+		shift
+		;;
+	--)
+		shift
+		break
+		;;
+	*)
+		exit 1
+		;;
+	esac
+done
 exit 0;
