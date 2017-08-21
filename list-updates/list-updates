@@ -16,11 +16,11 @@ numupdates=$((${#updates[*]}-1))
 
 # Help function
 function print_help() {
-	echo "-c|--count will print the number of updates to stdout."
-	echo "-l|--list will print the list of updates to stdout."
-	echo "-n|--number the number of lines in the list of updates to ouput."
+	echo "--count will print the number of updates to stdout."
+	echo "--list will print the list of updates to stdout."
+	echo "--number the number of lines in the list of updates to ouput."
 	echo "defaults to 20."
-	echo "-h|--help is this help."
+	echo "--help is this help."
 	echo 
 	echo "This command expects one or more arguments. If none are supplied,"
 	echo "then the program will return this help"
@@ -36,7 +36,9 @@ function print_updateList() {
 	if [[ $numupdates = "0" ]]; then
 		echo "No packages to update at this time."
 	else 
-		printf -- "%s\n" "${updates[@]:1:$NUMBER}"
+		if [[ $NUMBER > "0" ]]; then
+			printf -- "%s\n" "${updates[@]:1:$NUMBER}"
+		fi
 	fi
 }
 # Arg parser
@@ -47,15 +49,19 @@ eval set -- "$OPTS"
 
 while true; do
 	case "$1" in 
-		-c|--count ) UPDATE_COUNT="true"; shift ;;
-		-l|--list ) UPDATE_LIST="true"; shift ;;
-		-h|--help ) HELP="true"; shift ;;
-		-n|--number ) NUMBER=$2 ; shift 2 ;;
+		--count ) UPDATE_COUNT="true"; shift ;;
+		--list ) UPDATE_LIST="true"; shift ;;
+		--help ) HELP="true"; shift ;;
+		--number ) 
+		if [ -n "$2" ]; then
+			NUMBER="$2"; 
+		fi	
+		shift 2;;
 		--) shift; break ;;
 		* ) break ;;
 	esac
 done
-
+## Print relevant information to stdout
 if [ "$UPDATE_COUNT" = "true" ]; then
 	print_updateCount
 fi
