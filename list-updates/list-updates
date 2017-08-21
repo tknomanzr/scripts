@@ -6,6 +6,7 @@
 # Licence: WTFPL, use however you wish.
 UPDATE_COUNT="false"
 UPDATE_LIST="false"
+FROM_TINT2="false"
 HELP="false"
 NUMBER=20
 # Get the list of updates
@@ -42,7 +43,7 @@ function print_updateList() {
 	fi
 }
 # Arg parser
-OPTS=`getopt -o clhn:: -l count,list,help,number::  -n 'list-updates' -- "$@"`
+OPTS=`getopt -o clthn:: -l count,list,tint2,help,number::  -n 'list-updates' -- "$@"`
 if [ $? != 0 ] ; then echo "Failed parsing options." >&2 ; exit 1 ; fi
 
 eval set -- "$OPTS"
@@ -51,6 +52,7 @@ while true; do
 	case "$1" in 
 		--count ) UPDATE_COUNT="true"; shift ;;
 		--list ) UPDATE_LIST="true"; shift ;;
+		--tint2 ) FROM_TINT2="true"; shift ;;
 		--help ) HELP="true"; shift ;;
 		--number ) 
 		if [ -n "$2" ]; then
@@ -71,4 +73,8 @@ fi
 if [ "$HELP" = "true" ]; then
 	print_help
 fi
-exit 0;
+if [ "$FROM_TINT2" = "true" ]; then
+	echo "Press any key to return to command prompt."
+	read
+fi
+
