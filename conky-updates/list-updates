@@ -22,9 +22,6 @@ function print_help() {
 	echo "--number the number of lines in the list of updates to ouput."
 	echo "defaults to 20."
 	echo "--help is this help."
-	echo 
-	echo "This command expects one or more arguments. If none are supplied,"
-	echo "then the program will return this help"
 }
 
 #print the number of updates available

@@ -42,24 +42,7 @@ readarray -t updates <<< "$(apt list --upgradable 2>/dev/null)"
 numupdates=$((${#updates[*]}-1))
 
 echo "You have $numupdates pending updates"
-if [[ $numupdates = "0" ]]; then
-	echo "No packages to update at this time."
-else 
-	printf -- "%s\n" "${updates[@]}"
-fi
-
-## Ask user if they would like to proceed with the upgrade
-
-echo "This script will now execute the command:"'
-	sudo apt-get upgrade'
-read -rsn1 -p "Would you like to proceed with this upgrade? [Y|n]" $REPLY;echo
-echo
-if [[ $REPLY =~ ^[Yy]$ ]] ; then
-	safeUpgrade
-else
-	echo "You still have pending package upgrades." 
-	echo "Rerun this script to upgrade your system asap."
-	exit 0
-fi
+safeUpgrade
+# Wait for input to close terminal
 read -p"Press any key to close this terminal."
 exit 0
