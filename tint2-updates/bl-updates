@@ -1,11 +1,10 @@
 #!/bin/bash
 # A script that will allow the user to semi-automatically run 
 # sudo apt-get upate
-# sudo apt list --upgradable
 # sudo apt-get upgrade
 # This script can be used as is but was more designed
 # to work with the executor in tint2
-# Large part of this script have already been produced by the
+# Large parts of this script have already been produced by the
 # BunsenLabs development team.
 #
 # Author: William Bradley
