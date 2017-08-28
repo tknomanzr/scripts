@@ -43,7 +43,7 @@ def on_left_click(event):
   message("Run upgrade?")
   
 if __name__ == '__main__':
-	icon = gtk.status_icon_new_from_stock(gtk.STOCK_ABOUT)
+	icon = gtk.status_icon_new_from_icon_name("update-notifier")
 	icon.connect('popup-menu', on_right_click)
 	icon.connect('activate', on_left_click)
 	gtk.main()
