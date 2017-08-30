@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# This script will run periodically via the bl-updates timer and service.
+# Its purpose is to get a count of the number of available updates
+# and if greater than 0, run bl-update-icon, which will then
+# run bl-upgrade to check internet, safeUpdate and safeUpgrade
+# via terminal when left-clicked. 
+# The bl-update-icon will disappear as soon as bl-upgradeis run. 
+# It can also be right-clicked and disposed of.
+# Author: William Bradley
+# Date: 8/28/2017
+import os
+import subprocess
+import gtk
+
+def close_app(data):
+		gtk.main_quit()
+		
+def make_menu(event_button, event_time, data=None):
+  menu = gtk.Menu()
+  close_item = gtk.MenuItem("Close this notification")
+  
+  #Append the menu items  
+  menu.append(close_item)
+  #add callbacks
+  #open_item.connect_object("activate", open_app, "Open App")
+  close_item.connect_object("activate", close_app, "Closing this notification")
+  #Show the menu items
+  #open_item.show()
+  close_item.show()
+  
+  #Popup the menu
+  menu.popup(None, None, None, event_button, event_time)
+ 
+def on_right_click(data, event_button, event_time):
+  make_menu(event_button, event_time)
+ 
+def on_left_click(event):
+  subprocess.call(['x-terminal-emulator --command=~/bin/bl-upgrade'], shell=True)
+  #gtk.main_quit()
+  
+if __name__ == '__main__':
+	# Setup a timer to poll periodically.
+	
+	# Get the list of updates
+	num_updates = subprocess.check_output('aptitude search "~U" | wc -l', shell=True)
+	print "Number of Updates: " + num_updates  
+	if int(num_updates) > 0:
+		icon = gtk.status_icon_new_from_icon_name("update-notifier")
+		icon.connect('popup-menu', on_right_click)
+		icon.connect('activate', on_left_click)
+		gtk.main()
