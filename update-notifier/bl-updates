@@ -11,14 +11,19 @@
 import os
 import subprocess
 import gtk
+from threading import Timer
+import logging
 
-def close_app(data):
+def close_app(s):
+		logger.info('Exiting bl-update-notifier.')
 		gtk.main_quit()
+#-----------------------------------------------------------------------
+# The next block defines the callback functions for gtk events
+# for the new gtk.status_icon_new_from_icon_name that is created
 		
 def make_menu(event_button, event_time, data=None):
   menu = gtk.Menu()
   close_item = gtk.MenuItem("Close this notification")
-  
   #Append the menu items  
   menu.append(close_item)
   #add callbacks
@@ -35,17 +40,58 @@ def on_right_click(data, event_button, event_time):
   make_menu(event_button, event_time)
  
 def on_left_click(event):
-  subprocess.call(['x-terminal-emulator --command=~/bin/bl-upgrade'], shell=True)
-  #gtk.main_quit()
-  
-if __name__ == '__main__':
-	# Setup a timer to poll periodically.
+  subprocess.call(['x-terminal-emulator --command=~/bin/bl-upgrade;exit'], shell=True)
+  icon.set_visible(False)
+#-----------------------------------------------------------------------
+# Get the number of updates. If > 0, then show the icon. If 0 then hide 
+# it. numupdates is currently obtaied via a subprocess call to aptitude,
+# thus making aptitude a dependncy to this notifier, which I don't like
+# so much. It is possible to set it up using the python apt.cache module
+# but I need more work with the module before I understand how to 
+# implement it.
+
+def get_updates():
 	
-	# Get the list of updates
 	num_updates = subprocess.check_output('aptitude search "~U" | wc -l', shell=True)
-	print "Number of Updates: " + num_updates  
+	logger.info("Number of Updates: " + str(num_updates))  
 	if int(num_updates) > 0:
-		icon = gtk.status_icon_new_from_icon_name("update-notifier")
+		icon.set_visible(True)	
+	else:
+		icon.set_visible(False)
+	
+if __name__ == '__main__':
+	try:
+		# start up logging
+		logging.basicConfig(level=logging.INFO)
+		logger = logging.getLogger(__name__)
+	except:
+		print "Logger failed to start."
+	timer_interval = 60
+	# Create a notification icon. 
+	logger.info('Starting gtk.StatusIcon')
+	try:
+		icon = gtk.StatusIcon()
+		icon.set_from_icon_name("update-notifier")
 		icon.connect('popup-menu', on_right_click)
 		icon.connect('activate', on_left_click)
+		icon.set_tooltip_text("You have updates available.")
+		icon.set_has_tooltip(True)
+		icon.set_visible(True)
 		gtk.main()
+	except Exception, e:
+		logger.error(str(e))
+	#logger.info('Creating and Starting timer...')	
+	#try:
+	#	t = Timer(timer_interval, get_updates)
+	#	t.start()
+	# except Exception, e:
+	#	logger.error(str(e))
+		
+	# get the number of updates. The icon will hide or show depending
+	# on how many pckages it finds that need updating.
+	# Setup a timer to poll periodically.
+	# we need this loop to run infinitely or until we right-click
+	# and dismiss the icon, wereupon, the gtk.Main_quit() function
+	# should clean things up for me <-- double check that I do not need
+	# to explicitely destroy objects in python
+	
