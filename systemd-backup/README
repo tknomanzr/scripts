@@ -16,7 +16,7 @@ sudo systemctl start systemd-backup.timer
 sudo systemctl start systemd-backup.service
 
 Notes:
-- For automatic configuration see ssh-agent, ssh-add and x11-ssh-askpass or gnome-ssh-askpass.
+- For automatic backups see ssh-agent, ssh-add and x11-ssh-askpass or gnome-ssh-askpass.
 - You can adjust the settings in systemd-backup.timer and set a lower value,
   say 5 minutes in order to verify that everything is working.
 - Verify the service files are working via journalctl -xf
