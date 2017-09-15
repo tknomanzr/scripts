@@ -1,16 +1,19 @@
+Depends:
+electrum
+conky-all
+
 show_bitcoin is a simple python script that levarages information
 from an electrum wallet, along with current bit coin pricing to
 format and print out the amount of bitcoin in the wallet, the current
 price for bitcoing and the current estimated fiat currency value of 
 the bitcoin stored in the electrum wallet.
 
-The current iteration of this script is in its early stages. At the 
-moment is uses font1 & font2 as two variables that define the fonts and
-colors formatted for output to conky.
-
-TO DO: implement an arg parser to pass in the font arguments.
-
 Useage: Assuming the script is stored in ~/bin then issue
 ${execpi 60 ~/bin/show_bitcoin}
-into your conky. Output will be formatted for conky using values stored
-in font1 & font2 in show_bitcoin
+into your conky.
+
+TO DO:
+add an arg parser.
+function out current_price, btc_balance, approximate_value, so they can be optionally shown.
+Add a function thst will allow the json history from coinbase to be output to conky as a graph.
+
