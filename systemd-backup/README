@@ -7,8 +7,8 @@ Useage:
 copy systemd-backup.service and systemd-backup.timer to /etc/systemd/system
 edit backup excludes and replace all the /home/ entries with your $HOME.
 copy backup-excludes to ~/.config/backup
-edit backup. Where it says "password" enter the password to your remote host.
-Further down, enter the username and ip adress of your remote host.
+edit backup.
+Enter the username and ip adress of your remote host.
 Finally enter the path relative to your remote host that you want to backup to.
 Copy this file to /usr/local/bin
 Start systemd-backup.service and systemd-backup.timer
@@ -16,11 +16,10 @@ sudo systemctl start systemd-backup.timer
 sudo systemctl start systemd-backup.service
 
 Notes:
-- Currently, sshpass is using a password in plain text. I am hoping to be able to
-  implement some sort of hashing to obfucate that in the future.
+- For automatic configuration see ssh-agent, ssh-add and x11-ssh-askpass or gnome-ssh-askpass.
 - You can adjust the settings in systemd-backup.timer and set a lower value,
   say 5 minutes in order to verify that everything is working.
-- Verify the service files are working via journalctl -f
+- Verify the service files are working via journalctl -xf
 - Note the format for backup-excludes. Everything preceded with a -
   is removed from the backup and everything preceded by a + is added to it, regardless
   what was listed in the excludes portion. Always list excludes first and includes
@@ -32,5 +31,4 @@ Notes:
   is where I mount my sshfs share to the same server that I am backing up too.
   Obviously, I don't want to back that up, as it hosts a ton of media and has its
   own backup methods in place.
-- Finally, I may eventually create an install script that will assist in setting everything up.
 
