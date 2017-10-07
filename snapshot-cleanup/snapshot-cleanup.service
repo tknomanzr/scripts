@@ -1,6 +1,0 @@
-[Unit]
-Description=Cleanup apt-btrfs-snapper snapshots
-
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/clean-snapshots -k 2
