@@ -1,0 +1,30 @@
+#! /usr/bin/python
+# A simple utility that will calculate bitcoin balance from an electrum wallet.
+# Requires: electrum
+# Assumes: you currently have bitcoin stored in an electrum wallet.
+# Author: William Bradley
+# BunsenLabs Forum Handle: tknomanzr
+# License: wtfpl. Use this script however you see fit.
+
+import json, urllib2, subprocess
+import sys
+reload(sys)
+sys.setdefaultencoding('UTF8')
+
+url = 'https://coinbase.com/api/v1/prices/historical'
+# Get current bitcoin price
+price =  urllib2.urlopen(url)
+price_data = price.read(34)
+price_data = price_data[26:-2]
+price_data = float(price_data)
+# Get balance from wallet.
+# It comes in as a json object that needs to be converted.
+balance = json.loads(subprocess.check_output(["electrum","getbalance"]))
+current_balance = balance['confirmed']
+current_balance = float(current_balance)
+# Get approximate value of bitcoin in wallet.
+value = price_data * current_balance
+#print "Current Price: ", str(price_data)
+#print "BTC Balance: ", str(current_balance)
+bitcoin = u'\u0243'
+print (bitcoin + ': $' + str(round(value,2)))

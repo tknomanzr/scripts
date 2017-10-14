@@ -22,6 +22,7 @@
 #  
 #  
 import psutil
+import sys
 import pygtk, gobject
 pygtk.require('2.0')
 import gtk
@@ -91,6 +92,17 @@ class Per_Cpu:
 		self.window.show_all()
 		
 	def main(self):
+		# Ensure that only one instance of the program runs.
+		try:
+			import socket
+			s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+			## Create an abstract socket, by prefixing it with null. 
+			s.bind( '\0postconnect_gateway_notify_lock') 
+		except socket.error as e:
+			error_code = e.args[0]
+			error_string = e.args[1]
+			print "Process already running (%d:%s ). Exiting" % ( error_code, error_string) 
+			sys.exit (0) 
 		gobject.timeout_add_seconds(1, self.threaded)
 		gobject.threads_init()
 		gtk.main()
