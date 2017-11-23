@@ -1,0 +1,440 @@
+bunsen-exit (9.1.1-2) helium; urgency=medium
+
+  * Bugfix: incorrectly named debian/install file.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 31 Jul 2017 12:23:30 +0900
+
+bunsen-exit (9.1.1-1) helium; urgency=medium
+
+  * (damo) Set Helium theme as default.
+     Test for icon widths, and set minimum window width.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 31 Jul 2017 12:12:14 +0900
+
+bunsen-exit (9.1-1) helium; urgency=medium
+
+  * Split from bunsen-utilities 9.1-1
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 31 Jul 2017 11:48:04 +0900
+
+bunsen-utilities (9.1-1) helium; urgency=medium
+
+  * bl-conkypin: Upgrade for conky v.1.10 syntax.
+  * damo: bl-exit: Add new "helium" style.
+     Add 60x60px icons.
+     Improve window width setting.
+     Improve USAGE/HELP strings.
+  * damo: bl-tint2zen & bl-conkyzen: Improve filepath handling.
+  * damo: bl-obthemes: Improve gtk theme handling.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 28 Jul 2017 10:11:55 +0900
+
+bunsen-utilities (9.0-1) helium; urgency=medium
+
+  * Version change for helium release
+  * debian/control: add Recommends: systemd
+  * Remove bl-github-upgrade
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 12 Jun 2017 15:54:28 +0900
+
+bunsen-utilities (8.8.3-1) bunsen-hydrogen; urgency=medium
+
+  * bl-exit: use "classic" theme by default.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 07 Apr 2017 17:26:21 +0900
+
+bunsen-utilities (8.8.2-1) bunsen-hydrogen; urgency=medium
+
+  * bl-exit: fix error if window closed (issue #58)
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 18 Feb 2017 12:15:25 +0900
+
+bunsen-utilities (8.8.1-1) bunsen-hydrogen; urgency=high
+
+  * bl-tint2-session: fork tint2, also when no tint2-sessionfile exists.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 30 Jan 2017 11:26:50 +0900
+
+bunsen-utilities (8.8-1) bunsen-hydrogen; urgency=medium
+
+  * Version bump for deuterium merge
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 16 Jan 2017 17:22:02 +0900
+
+bunsen-utilities (8.7.2-1) bunsen-hydrogen; urgency=medium
+
+  * debian/control: add dependency on libnotify-bin
+  * capn-damo: bl-exitrc: Edit comments, fix some typos
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 14 Jan 2017 15:23:24 +0900
+
+bunsen-utilities (8.7.1-1) bunsen-hydrogen; urgency=medium
+
+  * Add bl-notify-broadcast utility and systemd service.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 29 Sep 2016 17:05:56 +0900
+
+bunsen-utilities (8.7-2) bunsen-hydrogen; urgency=high
+
+  * Jens John: debian/control: Add dependency on python-dbus.
+
+ -- John Crawley <john@bunsenlabs.org>  Sun, 03 Jul 2016 12:47:44 +0900
+
+bunsen-utilities (8.7-1) bunsen-hydrogen; urgency=medium
+
+  * bl-exit: Upgrade to version 2.0 with improvements from xaos52:
+     Add configurable buttons.
+     Add system conf file /etc/bl-exit/bl-exitrc with comments.
+     Use python native dbus calls.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 11 May 2016 23:35:01 +0900
+
+bunsen-utilities (8.6.7-1) bunsen-hydrogen; urgency=medium
+
+  * bl-pkg-versions: cope with BunsenLabs server redirection.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 18 Apr 2016 15:27:45 +0900
+
+bunsen-utilities (8.6.6-1) bunsen-hydrogen; urgency=low
+
+  * bl-exit: Restore acceleration
+  * Use Alt+b for reboot 
+
+ -- xaos52 <me@medion.localdomain>  Thu, 07 Apr 2016 16:44:46 +0200
+
+bunsen-utilities (8.6.5-1) bunsen-hydrogen; urgency=low
+
+  * bl-exit: Remove acceleration from all buttons
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 12 Mar 2016 13:17:58 +0900
+
+bunsen-utilities (8.6.4-1) bunsen-hydrogen; urgency=low
+
+  * bl-obthemes: Add fix for no primary monitor in function countMonitors()
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 03 Mar 2016 11:15:00 +0900
+
+bunsen-utilities (8.6.3-1) bunsen-hydrogen; urgency=low
+
+  * README: Reformat tabs.
+  * bin/bl-github-upgrade bin/bl-pkg-versions: add bunsen-python-apt-template.
+  * Move nitrogen | feh and scrot from Depends to Recommends.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 25 Jan 2016 14:28:06 +0900
+
+bunsen-utilities (8.6.2-1) bunsen-hydrogen; urgency=high
+
+  * bl-exit: Remove superfluous call to bl-lock in suspend().
+
+ -- John Crawley <john@bunsenlabs.org>  Sun, 17 Jan 2016 16:37:20 +0900
+
+bunsen-utilities (8.6.1-1) bunsen-hydrogen; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream version.
+
+ -- Jens John <dev@2ion.de>  Sat, 09 Jan 2016 04:43:46 +0100
+
+bunsen-utilities (8.6-3) bunsen-hydrogen; urgency=low
+
+  * debian/control: Add dependency on bunsen-common, edit description.
+  * Update README.
+  * bl-*: Move all to directory bin.
+  * debian/copyright: Edit year.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 08 Jan 2016 14:03:08 +0900
+
+bunsen-utilities (8.6-2) bunsen-hydrogen; urgency=medium
+
+  * Add bl-conkypin and bl-obthemes to debian/bunsen-utilities.install
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 07 Jan 2016 17:30:03 +0900
+
+bunsen-utilities (8.6-1) bunsen-hydrogen; urgency=medium
+
+  * Replace zenity with yad in all scripts.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 04 Jan 2016 12:56:29 +0900
+
+bunsen-utilities (8.5.1-1) bunsen-hydrogen; urgency=medium
+
+  * bl-exit: fix typo in self.set_title.
+  * bl-exit: fix bugs with logout option.
+  * bl-conkyzen: more meaningful dialog message, if no conkys selected.
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 21 Nov 2015 15:48:58 +0900
+
+bunsen-utilities (8.5-1) bunsen-hydrogen; urgency=medium
+
+  * bl-exit: add command line flags.
+  * Add general script corrections and enhancements.
+  * Add Zenity GUI tweaks.
+  * Update author email addresses.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 23 Oct 2015 11:35:46 +0900
+
+bunsen-utilities (8.4-1) bunsen-hydrogen; urgency=low
+
+  * Add bl-pkg-versions and bl-github-upgrade.
+
+ -- John Crawley <john@bunsenlabs.org>  Sun, 13 Sep 2015 16:04:52 +0900
+
+bunsen-utilities (8.3.1-1) bunsen-hydrogen; urgency=low
+
+  * bl-lock: Add "username" to live reminder message.
+  * bl-lock: Change live test directory to /lib/live.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 10 Sep 2015 17:42:54 +0900
+
+bunsen-utilities (8.3-1) bunsen-hydrogen; urgency=low
+
+  * Adjust python shebangs to call python2.7.
+  * Adjust dependency to python2.7
+  * bl-lock: check existence of /var/lib/live to detect live session.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 09 Sep 2015 12:29:45 +0900
+
+bunsen-utilities (8.2-2) bunsen-hydrogen; urgency=low
+
+  * Remove dependency on lightdm.
+  * Edit README.
+  * Edit bl-lock slightly.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 03 Sep 2015 17:18:33 +0900
+
+bunsen-utilities (8.2-1) bunsen-hydrogen; urgency=low
+
+  * bl-lock add test for availability of lock command.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 28 Aug 2015 16:00:41 +0900
+
+bunsen-utilities (8.1-1) bunsen-hydrogen; urgency=low
+
+  * bl-lock switch to light-locker and amend dependencies.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 26 Aug 2015 18:05:05 +0900
+
+bunsen-utilities (8.0-1) bunsen-hydrogen; urgency=low
+
+  * bl-exit improve icon rendition.
+
+ -- John Crawley <john@bunsenlabs.org>  Tue, 25 Aug 2015 16:27:54 +0900
+
+bunsen-utilities (0.3-13~git) unstable; urgency=low
+
+  * bl-tint2restart avoid possible race condition.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 10 Jul 2015 17:03:44 +0900
+
+bunsen-utilities (0.3-12) unstable; urgency=low
+
+  * bl-tint2restart avoid starting duplicate processes, use SIGKILL if needed.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 09 Jul 2015 17:23:28 +0900
+
+bunsen-utilities (0.3-11) unstable; urgency=low
+
+  *  bl-tint2-session: Create sessionfile when no file specified.
+
+ -- John Crawley <john@bunsenlabs.org>  Mon, 06 Jul 2015 12:40:13 +0900
+
+bunsen-utilities (0.3-10) unstable; urgency=low
+
+  * Add missing scripts to debian/bunsen-utilities.install.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 03 Jun 2015 17:26:00 +0900
+
+bunsen-utilities (0.3-9) unstable; urgency=low
+
+  * Add bl-tint2restart to restart tint2s from the pipemenu.
+  * Add bugfixes and improvements to getting/killing tint2 processes.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 03 Jun 2015 14:27:33 +0900
+
+bunsen-utilities (0.3-8) unstable; urgency=low
+
+  * Add bl-conkyzen improvements.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 22 May 2015 11:40:52 +0900
+
+bunsen-utilities (0.3-7) unstable; urgency=low
+
+  * Add compositing restart in tint2 scripts.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 20 May 2015 12:37:08 +0900
+
+bunsen-utilities (0.3-6) unstable; urgency=low
+
+  * Remove bl-gvim, now in bunsen-configs.
+  * Remove dependency on bunsen-configs.
+
+ -- John Crawley <john@bunsenlabs.org>  Sun, 17 May 2015 22:51:00 +0900
+
+bunsen-utilities (0.3-5) unstable; urgency=low
+
+  * Remove bl-alternatives, it is now in bunsen-configs.
+
+ -- John Crawley <john@bunsenlabs.org>  Sun, 17 May 2015 22:36:40 +0900
+
+bunsen-utilities (0.3-4) unstable; urgency=low
+
+  * Add tint2 and conky bugfixes.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 14 May 2015 10:40:38 +0900
+
+bunsen-utilities (0.3-3) unstable; urgency=low
+
+  * Remove bl-user-setup, it is now in bunsen-configs.
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 09 May 2015 18:34:35 +0900
+
+bunsen-utilities (0.3-2) unstable; urgency=low
+
+  * Add conky and tint2 editing scripts.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 29 Apr 2015 11:34:49 +0900
+
+bunsen-utilities (0.3-1) unstable; urgency=low
+
+  * Add conky and tint2 scripts, add gvim support to bl-alternatives.
+
+ -- John Crawley <john@bunsenlabs.org>  Tue, 28 Apr 2015 09:58:33 +0900
+
+bunsen-utilities (0.2-3) unstable; urgency=low
+
+  * Add bl-alternatives.
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 25 Apr 2015 11:25:23 +0900
+
+bunsen-utilities (0.2-2) unstable; urgency=low
+
+  * Eliminate dependency on rpl in bl-user-setup.
+  * Add date to tar backup suffix in bl-user-setup.
+
+ -- John Crawley <john@bunsenlabs.org>  Tue, 14 Apr 2015 15:21:44 +0900
+
+bunsen-utilities (0.2-1) unstable; urgency=low
+
+  * Initial release: merge of bunsen-exit, bunsen-lock, bunsen-user-setup and bunsen-wmhacks.
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 10 Apr 2015 13:58:37 +0900
+
+bunsen-user-setup (0.1-2) unstable; urgency=low
+
+  * Change install path of bl-user-setup to /usr/lib/bunsen/bunsen-user-setup/
+
+ -- John Crawley <john@bunsenlabs.org>  Fri, 06 Mar 2015 18:17:57 +0900
+
+bunsen-user-setup (0.1-1) unstable; urgency=low
+
+  * Remove VLC fix, adapt for use with lightdm in BunsenLabs.
+  * Switch to dpkg-source 3.0 (quilt) format.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 04 Mar 2015 15:40:53 +0900
+
+cb-slim (0.05) unstable; urgency=low
+
+  * Add fix for VLC in live sessions.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Thu, 10 Jan 2013 18:34:45 +0000
+
+cb-slim (0.04) unstable; urgency=low
+
+  * Remove slim.conf and dpkg-divert's.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Thu, 27 Sep 2012 10:17:22 +0100
+
+cb-slim (0.03) unstable; urgency=low
+
+  * Update to always add dpkg-divert.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Thu, 27 Sep 2012 09:05:31 +0100
+
+cb-slim (0.02) unstable; urgency=low
+
+  * Add slim.conf file with dpkg-divert.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Wed, 26 Sep 2012 22:02:49 +0100
+
+cb-slim (0.01) unstable; urgency=low
+
+  * Initial release.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Mon, 16 Apr 2012 11:28:48 +0100
+
+bunsen-lock (0.01-1) unstable; urgency=low
+
+  * Switch to dpkg-source 3.0 (quilt) format.
+  * Adjust naming for BunsenLabs.
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 05 Mar 2015 17:08:19 +0900
+
+cb-lock (0.01) unstable; urgency=low
+
+  * Initial release.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Mon, 16 Apr 2012 11:28:48 +0100
+
+bunsen-wmhacks (0.06-1) unstable; urgency=low
+
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- John Crawley <john@bunsenlabs.org>  Thu, 05 Mar 2015 15:30:30 +0900
+
+cb-wmhacks (0.06) unstable; urgency=low
+
+  * Remove edge detection snapping, too buggy.
+  * Split into two seperate scripts.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Mon, 30 Apr 2012 11:34:08 +0100
+
+cb-wmhacks (0.05) unstable; urgency=low
+
+  * Add PID to ID to increase uniqueness.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Fri, 27 Apr 2012 12:59:15 +0100
+
+cb-wmhacks (0.04) unstable; urgency=low
+
+  * Fix horizontal place.
+  * Replace kupfer with gmrun.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Fri, 27 Apr 2012 08:15:17 +0100
+
+cb-wmhacks (0.03) unstable; urgency=low
+
+  * Add session management for aero snapping.
+  * Add xdotool to depends.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Thu, 26 Apr 2012 14:21:11 +0100
+
+cb-wmhacks (0.02) unstable; urgency=low
+
+  * Add slight delay to hotcorner detection.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Wed, 25 Apr 2012 07:54:03 +0100
+
+cb-wmhacks (0.01) unstable; urgency=low
+
+  * Initial release.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Mon, 23 Apr 2012 09:19:16 +0100
+
+bunsen-exit (0.1-1) unstable; urgency=low
+
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- John Crawley <john@bunsenlabs.org>  Tue, 03 Mar 2015 18:10:45 +0900
+
+bunsen-exit (0.01)
+
+  * recode for systemd
+
+ -- John Crawley <john@bunsenlabs.org> Tue. 17th Feb. 2015 22:46:41 +0900
+
+cb-exit (0.01) unstable; urgency=low
+
+  * Initial release.
+
+ -- Philip Newborough <corenominal@corenominal.org>  Mon, 16 Apr 2012 11:28:48 +0100
+
